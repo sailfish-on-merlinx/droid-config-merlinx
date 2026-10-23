@@ -4,7 +4,8 @@ Group: System/Configuration
 Requires: droid-hal-merlinx
 Requires: droid-hal-version-merlinx
 Requires: droid-config-merlinx
-Requires: droid-config-merlinx-policy
+Requires: droid-config-merlinx-policy-settings
+Requires: droid-config-merlinx-pulseaudio-settings
 Requires: droid-config-merlinx-preinit-plugin
 Requires: droid-config-merlinx-bluez5
 
@@ -18,10 +19,6 @@ Requires: qt5-qtwayland-wayland_egl
 Requires: qt5-qpa-hwcomposer-plugin
 Requires: qtscenegraph-adaptation
 Requires: qt5-plugin-generic-evdev
-
-# MediaTek MT6768 / Bionic Quirks
-Requires: libtls-padding
-Requires: parse-android-dynparts
 
 # Audio & Voice Call Routing
 Requires: pulseaudio-modules-droid
@@ -40,7 +37,6 @@ Requires: qt5-qtmultimedia-plugin-mediaservice-gstmediacapture
 
 # Telephony, Dual-SIM & VoLTE
 Requires: ofono-binder-plugin
-Requires: ofono-binder-plugin-ext-mtk
 Requires: dummy_netd
 
 # Bluetooth & BlueZ 5
