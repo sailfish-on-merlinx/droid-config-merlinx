@@ -9,7 +9,9 @@
 %define android_version_major 16
 
 Provides: ofono-configs
+Provides: ofono-configs-binder
 Obsoletes: ofono-configs-mer
+Obsoletes: ofono-configs-binder
 
 # 1080 x 2340 resolution (~395 ppi) -> pixel ratio 1.5 - 1.75
 %define pixel_ratio 1.5
