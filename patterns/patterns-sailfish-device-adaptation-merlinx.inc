@@ -2,6 +2,9 @@
 Summary: Sailfish OS Adaptation for Xiaomi Redmi Note 9 (merlinx)
 Group: System/Configuration
 Requires: droid-hal-merlinx
+Requires: droid-hal-merlinx-kernel-modules
+Requires: droid-hal-merlinx-tools
+Requires: droid-hal-merlinx-users
 Requires: droid-hal-version-merlinx
 Requires: droid-config-merlinx
 Requires: droid-config-merlinx-policy-settings
