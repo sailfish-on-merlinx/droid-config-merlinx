@@ -1,0 +1,13 @@
+[Unit]
+Description=Load wlan module for MT6768
+Conflicts=shutdown.target actdead.target
+After=bluebinder.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/droid/enable-wifi.sh
+ExecStop=/usr/bin/droid/disable-wifi.sh
+
+[Install]
+WantedBy=multi-user.target
