@@ -68,6 +68,8 @@ Requires: dummy_netd
 
 # Dynamic partitions in super (dmsetup.service)
 Requires: parse-android-dynparts
+# Keeps prebuilt Mali from overwriting glibc TLS (preloaded via /etc/ld.so.preload)
+Requires: libtls-padding
 Requires: device-mapper
 
 # binder-list etc. for debugging HAL services
