@@ -1,0 +1,5 @@
+# Loaded by droid-hal-init after /vendor/build.prop and overrides it.
+# The vendor sets ro.hardware.egl=meow (MediaTek's libGLES_meow.so wrapper in
+# front of Mali). With libhybris, lipstick crashes in Qt thread data right
+# after EGL init when MEOW is loaded, and runs when Mali is loaded directly.
+ro.hardware.egl=mali
