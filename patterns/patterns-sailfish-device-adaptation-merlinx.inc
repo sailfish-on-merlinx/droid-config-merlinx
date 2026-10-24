@@ -38,8 +38,9 @@ Requires: gmp-droid
 Requires: nemo-gstreamer1.0-interfaces
 Requires: qt5-qtmultimedia-plugin-mediaservice-gstmediacapture
 
-# Telephony, Dual-SIM & VoLTE
+# Telephony, Dual-SIM & VoLTE (MediaTek MTKRadioEx 3.0)
 Requires: ofono-binder-plugin
+Requires: ofono-binder-plugin-ext-mtk
 Requires: dummy_netd
 
 # Bluetooth & BlueZ 5
@@ -54,6 +55,13 @@ Requires: geoclue-provider-hybris
 Requires: hybris-libsensorfw-qt5
 Requires: ngfd-plugin-native-vibrator
 Requires: libngf-qt5-qtfeedback
+
+# Biometrics & Fingerprint Unlock
+Requires: sailfish-fpd-community
+Requires: droid-biometry-fp
+Requires: sailfish-devicelock-fpd
+Obsoletes: jolla-devicelock-daemon-encsfa
+Obsoletes: jolla-devicelock-plugin-encsfa
 
 # System, Battery & USB
 Requires: mce-plugin-libhybris

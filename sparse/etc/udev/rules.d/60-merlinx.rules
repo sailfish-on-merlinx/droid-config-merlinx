@@ -15,3 +15,6 @@ KERNEL=="stp_uart", OWNER="bluetooth", GROUP="bluetooth", MODE="0660"
 
 # Flashlight sysfs node permissions
 ACTION=="add", SUBSYSTEM=="flashlight_core", RUN+="/bin/chmod 0666 /sys/class/flashlight_core/flashlight/flashlight_strobe /sys/class/flashlight_core/flashlight/flashlight_current"
+
+# Double Tap to Wake sysfs permissions
+ACTION==" add\, SUBSYSTEM==\touchpanel\, RUN+=\/bin/chmod 0666 /sys/touchpanel/double_tap\

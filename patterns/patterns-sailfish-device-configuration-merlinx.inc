@@ -21,6 +21,7 @@ Requires: jolla-clock
 Requires: jolla-email
 Requires: jolla-gallery
 Requires: jolla-mediaplayer
+Requires: jolla-mediaplayer-radio
 Requires: jolla-notes
 Requires: sailfish-browser
 Requires: sailfish-office
