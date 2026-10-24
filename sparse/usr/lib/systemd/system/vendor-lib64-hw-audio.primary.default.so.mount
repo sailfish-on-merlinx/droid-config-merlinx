@@ -1,0 +1,20 @@
+[Unit]
+Description=Mount for /vendor/lib64/hw/audio.primary.default.so
+# The MTK audio HAL is 32-bit only; pulseaudio (64-bit) loads this module.
+# audio.hidl_compat.default forwards to the vendor HIDL audio service
+# (HADK-hot, 32-bit audio library; as droid-config-fp4).
+Before=local-fs.target systemd-modules-load.service
+After=vendor.mount
+Requires=vendor.mount
+
+[Mount]
+What=/usr/libexec/droid-hybris/system/lib64/hw/audio.hidl_compat.default.so
+Where=/vendor/lib64/hw/audio.primary.default.so
+Type=none
+Options=bind
+# Default is 90 which makes mount period too long in case of
+# errors so drop it down a notch.
+TimeoutSec=10
+
+[Install]
+WantedBy=local-fs.target
