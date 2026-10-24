@@ -1,0 +1,5 @@
+# usb-moded owns the USB gadget on Sailfish OS. The vendor AIDL USB gadget
+# HAL aborts every few seconds here and can reconfigure the gadget
+# (0e8d:d001), taking USB networking away from usb-moded.
+service vendor.usb-gadget-hal /vendor/bin/hw/android.hardware.usb.gadget-service.mediatek_HYBRIS_DISABLED
+    user root
