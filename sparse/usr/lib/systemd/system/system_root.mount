@@ -1,0 +1,21 @@
+[Unit]
+Description=Droid mount for /system_root
+Before=local-fs.target systemd-modules-load.service
+After=dmsetup.service
+
+[Mount]
+What=/dev/mapper/dynpart-system
+Where=/system_root
+Type=ext4
+Options=ro
+# Default is 90 which makes mount period too long in case of
+# errors so drop it down a notch.
+TimeoutSec=10
+
+[Install]
+WantedBy=local-fs.target
+
+# The system partition is system-as-root (LineageOS mounts it at /).
+# HADK-hot: mount it at /system_root and bind /system_root/system to /system.
+# From device/xiaomi/mt6768-common fstab.mt6768:
+# system  /system  ext4  ro  wait,avb=vbmeta_system,logical,first_stage_mount
