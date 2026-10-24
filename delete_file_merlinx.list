@@ -1,0 +1,6 @@
+# droid-hal-configs sparse-16 waits forever for an AIDL KeyMint HAL before
+# multi-user.target. merlinx has only HIDL keymaster@4.1 (beanpod), so it would
+# block boot. The wait exists for sailfish-fpd, which this port does not ship.
+/usr/lib/systemd/system/multi-user.target.wants/wait_for_keymint.service
+/usr/lib/systemd/system/wait_for_keymint.service
+/usr/bin/droid/wait_for_keymint
