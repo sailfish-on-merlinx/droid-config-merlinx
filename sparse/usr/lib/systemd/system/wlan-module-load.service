@@ -1,13 +1,15 @@
 [Unit]
-Description=Load wlan module for MT6768
+Description=Enable MT6768 Wi-Fi adapter
 Conflicts=shutdown.target actdead.target
-After=bluebinder.service
+After=droid-hal-init.service
+Requires=droid-hal-init.service
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/bin/droid/enable-wifi.sh
-ExecStop=/usr/bin/droid/disable-wifi.sh
+TimeoutStartSec=120
+ExecStart=/bin/sh /usr/bin/droid/enable-wifi.sh
+ExecStop=/bin/sh /usr/bin/droid/disable-wifi.sh
 
 [Install]
 WantedBy=multi-user.target

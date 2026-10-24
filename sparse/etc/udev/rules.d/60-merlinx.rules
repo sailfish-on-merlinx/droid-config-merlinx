@@ -1,20 +1,6 @@
-# Goodix Fingerprint
-KERNEL=="goodix_fp", OWNER="system", GROUP="system", MODE="0660"
-KERNEL=="teei_fp", OWNER="system", GROUP="system", MODE="0660"
-
-# Consumer IR Blaster
-KERNEL=="irtx", OWNER="root", GROUP="users", MODE="0666"
-
-# MediaTek GPS
-KERNEL=="stgps", OWNER="gps", GROUP="gps", MODE="0660"
-KERNEL=="gps_emi", OWNER="gps", GROUP="gps", MODE="0660"
-
-# MediaTek WMT / Wi-Fi / BT
-KERNEL=="wmtWifi", OWNER="wifi", GROUP="wifi", MODE="0660"
-KERNEL=="stp_uart", OWNER="bluetooth", GROUP="bluetooth", MODE="0660"
+# Device node permissions for /dev/fm, /dev/wmtWifi, /dev/goodix_fp,
+# /dev/teei_fp and /dev/irtx come from the vendor ueventd.rc, which
+# droid-hal converts to udev rules.
 
 # Flashlight sysfs node permissions
 ACTION=="add", SUBSYSTEM=="flashlight_core", RUN+="/bin/chmod 0666 /sys/class/flashlight_core/flashlight/flashlight_strobe /sys/class/flashlight_core/flashlight/flashlight_current"
-
-# Double Tap to Wake sysfs permissions
-ACTION==" add\, SUBSYSTEM==\touchpanel\, RUN+=\/bin/chmod 0666 /sys/touchpanel/double_tap\

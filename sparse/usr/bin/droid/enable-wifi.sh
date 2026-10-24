@@ -1,14 +1,16 @@
-#!/bin/bash
-modprobe wlan_drv_gen4m
+#!/bin/sh
+# MT6768 Wi-Fi bring-up. The WMT/WLAN drivers are built into the kernel
+# (no loadable modules on this device); wmt_loader/wmt_launcher are started
+# by droid-hal-init from the vendor init scripts.
 
-# Wait for property service
+# Wait for the property system to be up.
 while [ ! -e /dev/socket/property_service ]; do sleep 0.1; done
 
-# Wait for MediaTek NVRAM initialization
+# Wait for nvram to be loaded (MAC address/calibration).
 while [ "$(getprop vendor.service.nvram_init)" != "Ready" ]; do sleep 0.2; done
 while [ "$(getprop vendor.mtk.nvram.ready)" != "1" ]; do sleep 0.2; done
 
-# Trigger WMT Wi-Fi client mode
+# Enable the Wi-Fi adapter in client mode.
 while [ ! -e /dev/wmtWifi ]; do sleep 0.2; done
 echo S > /dev/wmtWifi
 
