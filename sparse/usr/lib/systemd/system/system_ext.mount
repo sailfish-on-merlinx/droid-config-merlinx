@@ -1,0 +1,17 @@
+[Unit]
+Description=Droid mount for /system_ext
+Before=local-fs.target systemd-modules-load.service
+After=dmsetup.service
+
+[Mount]
+What=/dev/mapper/dynpart-system_ext
+Where=/system_ext
+Type=ext4
+Options=ro
+TimeoutSec=10
+
+[Install]
+WantedBy=local-fs.target
+
+# From device/xiaomi/mt6768-common fstab.mt6768:
+# system_ext  /system_ext  ext4  ro  wait,avb=vbmeta_system,logical,first_stage_mount

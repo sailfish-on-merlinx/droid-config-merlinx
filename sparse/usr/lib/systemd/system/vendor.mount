@@ -1,0 +1,19 @@
+[Unit]
+Description=Droid mount for /vendor
+Before=local-fs.target systemd-modules-load.service
+After=dmsetup.service
+
+[Mount]
+What=/dev/mapper/dynpart-vendor
+Where=/vendor
+Type=ext4
+Options=ro
+# Default is 90 which makes mount period too long in case of
+# errors so drop it down a notch.
+TimeoutSec=10
+
+[Install]
+WantedBy=local-fs.target
+
+# From device/xiaomi/mt6768-common fstab.mt6768:
+# vendor  /vendor  ext4  ro  wait,avb,logical,first_stage_mount
