@@ -33,7 +33,7 @@ Requires: jolla-settings-system-flashlight
 Requires: geoclue-provider-mlsdb
 
 # Visual Theme & Scale Assets
-Requires: sailfish-content-graphics-default-z1.5-large
+Requires: sailfish-content-graphics-z%{icon_res}
 
 # Devices with 2G or more memory should also include this booster
 # to improve camera startup times and the like
