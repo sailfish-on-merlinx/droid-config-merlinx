@@ -21,7 +21,6 @@ Requires: jolla-clock
 Requires: jolla-email
 Requires: jolla-gallery
 Requires: jolla-mediaplayer
-Requires: jolla-mediaplayer-radio
 Requires: jolla-notes
 Requires: sailfish-browser
 Requires: sailfish-office
@@ -35,6 +34,10 @@ Requires: geoclue-provider-mlsdb
 
 # Visual Theme & Scale Assets
 Requires: sailfish-content-graphics-default-z1.5-large
+
+# Devices with 2G or more memory should also include this booster
+# to improve camera startup times and the like
+Requires: mapplauncherd-booster-silica-qt5-media
 
 %description -n patterns-sailfish-device-configuration-merlinx
 Pattern for Sailfish OS device configuration on Xiaomi Redmi Note 9 (merlinx).

@@ -1,73 +1,79 @@
 %package -n patterns-sailfish-device-adaptation-merlinx
-Summary: Sailfish OS Adaptation for Xiaomi Redmi Note 9 (merlinx)
-Group: System/Configuration
+Summary: Jolla HW Adaptation merlinx
 Requires: droid-hal-merlinx
+Requires: droid-hal-merlinx-img-boot
 Requires: droid-hal-merlinx-kernel-modules
-Requires: droid-hal-merlinx-tools
-Requires: droid-hal-merlinx-users
-Requires: droid-hal-version-merlinx
-Requires: droid-config-merlinx
-Requires: droid-config-merlinx-policy-settings
+Requires: droid-config-merlinx-sailfish
 Requires: droid-config-merlinx-pulseaudio-settings
+Requires: droid-config-merlinx-policy-settings
 Requires: droid-config-merlinx-preinit-plugin
+Requires: droid-config-merlinx-flashing
 Requires: droid-config-merlinx-bluez5
+Requires: droid-hal-version-merlinx
 
-# Hybris Graphics & Wayland Compositor (Lipstick)
-Requires: libhybris >= 0.0.5.48
+# Hybris packages
 Requires: libhybris-libEGL
 Requires: libhybris-libGLESv2
 Requires: libhybris-libwayland-egl
-Requires: libhybris-libsync
+
+# Sensors
+Requires: hybris-libsensorfw-qt5
+
+# Vibra
+Requires: ngfd-plugin-native-vibrator
+Requires: libngf-qt5-qtfeedback
+
+# Needed for /dev/touchscreen symlink
+Requires: qt5-plugin-generic-evdev
+
+Requires: pulseaudio-modules-droid
+Requires: pulseaudio-modules-droid-hidl
+
+# Used by the MT6768 Volla 22 port for voice call audio
+Requires: audiosystem-passthrough-dummy-af
+
+# for audio recording to work:
+Requires: qt5-qtmultimedia-plugin-mediaservice-gstmediacapture
+
+# These need to be per-device due to differing backends (fbdev, eglfs, hwc, ..?)
 Requires: qt5-qtwayland-wayland_egl
 Requires: qt5-qpa-hwcomposer-plugin
 Requires: qtscenegraph-adaptation
-Requires: qt5-plugin-generic-evdev
 
-# Audio & Voice Call Routing
-Requires: pulseaudio-modules-droid
-Requires: pulseaudio-modules-droid-hidl
-Requires: audiosystem-passthrough-dummy-af
-
-# Camera & Multimedia Hardware Acceleration
-Requires: gstreamer1.0
-Requires: gstreamer1.0-plugins-good
-Requires: gstreamer1.0-plugins-base
-Requires: gstreamer1.0-plugins-bad
+# For hybris devices with droidmedia, see HADK pdf for more information
 Requires: gstreamer1.0-droid
-Requires: gmp-droid
-Requires: nemo-gstreamer1.0-interfaces
-Requires: qt5-qtmultimedia-plugin-mediaservice-gstmediacapture
+Obsoletes: gmp-droid
 
-# Telephony, Dual-SIM & VoLTE (MediaTek MTKRadioEx 3.0)
+# This is needed for notification LEDs
+Requires: mce-plugin-libhybris
+
+# USB mode controller
+Requires: usb-moded
+
+Requires: rfkill
+
+# enable device lock and allow to select untrusted software
+Requires: jolla-devicelock-daemon-encsfa
+
+# For GPS
+Requires: geoclue-provider-hybris
+
+# Bluetooth: binderized Bluetooth HAL bridged to BlueZ (CONFIG_BT_HCIVHCI)
+Requires: bluebinder
+
+# Telephony: binder RIL + MediaTek IMtkRadioEx@3.0 extension
 Requires: ofono-binder-plugin
 Requires: ofono-binder-plugin-ext-mtk
 Requires: dummy_netd
 
-# Bluetooth & BlueZ 5
-Requires: bluez5-tools
-Requires: bluebinder
-Requires: rfkill
+# Dynamic partitions in super (dmsetup.service)
+Requires: parse-android-dynparts
+Requires: device-mapper
 
-# GNSS / GPS Positioning
-Requires: geoclue-provider-hybris
-
-# Sensors & Feedback
-Requires: hybris-libsensorfw-qt5
-Requires: ngfd-plugin-native-vibrator
-Requires: libngf-qt5-qtfeedback
-
-# Biometrics & Fingerprint Unlock
-Requires: sailfish-fpd-community
-Requires: droid-biometry-fp
-Requires: sailfish-devicelock-fpd
-Obsoletes: jolla-devicelock-daemon-encsfa
-Obsoletes: jolla-devicelock-plugin-encsfa
-
-# System, Battery & USB
-Requires: mce-plugin-libhybris
-Requires: usb-moded
+# binder-list etc. for debugging HAL services
+Requires: libgbinder-tools
 
 %description -n patterns-sailfish-device-adaptation-merlinx
-Pattern for Sailfish OS device adaptation on Xiaomi Redmi Note 9 (merlinx).
+Pattern with packages for merlinx HW Adaptation
 
 %files -n patterns-sailfish-device-adaptation-merlinx
