@@ -1,5 +1,9 @@
 [Unit]
 Description=Setup dynamic partitions
+# udevd must handle the device-mapper add events, or the dm devices stay
+# SYSTEMD_READY=0 and the mount units below fail on a dependency.
+Wants=systemd-udevd.service
+After=systemd-udevd.service systemd-udev-trigger.service
 Before=system_root.mount system_ext.mount vendor.mount product.mount local-fs.target systemd-modules-load.service droid-hal-init.service
 DefaultDependencies=no
 
