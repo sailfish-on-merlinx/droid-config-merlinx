@@ -1,0 +1,19 @@
+# MediaTek/Mali + libhybris devices needed inside Sailjail (firejail) app
+# sandboxes, as in the MT6768 Volla 22 port (droid-config-halium-mimameid).
+# /dev/binder and /dev/hwbinder are binderfs symlinks here, so whitelist
+# /dev/binderfs as well.
+whitelist /dev/mali0
+whitelist /dev/pmsg0
+whitelist /dev/ion
+whitelist /dev/binderfs
+whitelist /dev/binder
+whitelist /dev/hwbinder
+whitelist /dev/__properties__
+whitelist /dev/socket/property_service
+whitelist /dev/random
+whitelist /dev/urandom
+whitelist /dev/shm
+whitelist /dev/ashmem
+
+# libtls-padding is preloaded from /etc/ld.so.preload
+private-etc ld.so.preload
