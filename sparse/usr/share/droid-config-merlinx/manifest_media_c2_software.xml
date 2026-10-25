@@ -1,0 +1,5 @@
+<!-- Bind-mounted over /system/etc/vintf/manifest/manifest_media_c2_software.xml
+     by droid-config-merlinx: nothing provides the Codec2 software store on
+     Sailfish OS (mediaswcodec lives in the com.android.media.swcodec APEX). -->
+<manifest version="1.0" type="framework">
+</manifest>
