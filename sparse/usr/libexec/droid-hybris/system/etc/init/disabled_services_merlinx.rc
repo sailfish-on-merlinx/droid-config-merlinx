@@ -3,3 +3,9 @@
 # (0e8d:d001), taking USB networking away from usb-moded.
 service vendor.usb-gadget-hal /vendor/bin/hw/android.hardware.usb.gadget-service.mediatek_HYBRIS_DISABLED
     user root
+
+# Android's usbd only drives the gadget through the AIDL IUsbGadget HAL
+# disabled above; it then asks servicemanager to start it every second.
+# No Android USB service should compete with usb-moded (mal, IRC 2026-05-09).
+service usbd /system/bin/usbd_HYBRIS_DISABLED
+    user root
