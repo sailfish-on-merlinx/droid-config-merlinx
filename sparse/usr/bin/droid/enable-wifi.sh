@@ -12,7 +12,7 @@ while [ "$(getprop vendor.mtk.nvram.ready 2>/dev/null)" != "1" ]; do sleep 0.2; 
 
 # Enable the Wi-Fi adapter in client mode.
 while [ ! -e /dev/wmtWifi ]; do sleep 0.2; done
-echo S > /dev/wmtWifi
+echo S > /dev/wmtWifi || { echo "enable-wifi: writing S to /dev/wmtWifi failed" >&2; exit 1; }
 
+# libhybris aborts setprop at exit after the property is set; ignore that.
 setprop wifi.interface wlan0 2>/dev/null || true
-exit 0
