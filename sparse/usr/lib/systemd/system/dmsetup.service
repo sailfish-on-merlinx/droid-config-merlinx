@@ -1,10 +1,12 @@
 [Unit]
 Description=Setup dynamic partitions
-# udevd must handle the device-mapper add events, or the dm devices stay
-# SYSTEMD_READY=0 and the mount units below fail on a dependency.
+# dmsetup waits for udev to confirm the device-mapper nodes, so udevd must
+# be running, but the mappings (and vendor.mount) must be ready before udev
+# coldplug: it replays pending firmware requests, and the touch controller's
+# firmware lives in /vendor/firmware.
 Wants=systemd-udevd.service
-After=systemd-udevd.service systemd-udev-trigger.service
-Before=system_root.mount system_ext.mount vendor.mount product.mount local-fs.target systemd-modules-load.service droid-hal-init.service
+After=systemd-udevd.service
+Before=systemd-udev-trigger.service system_root.mount system_ext.mount vendor.mount product.mount local-fs.target systemd-modules-load.service droid-hal-init.service
 DefaultDependencies=no
 
 [Service]

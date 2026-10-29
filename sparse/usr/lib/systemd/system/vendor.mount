@@ -1,6 +1,7 @@
 [Unit]
 Description=Droid mount for /vendor
-Before=local-fs.target systemd-modules-load.service
+# Before udev coldplug: it replays firmware requests for blobs in /vendor/firmware.
+Before=local-fs.target systemd-modules-load.service systemd-udev-trigger.service
 After=dmsetup.service
 
 [Mount]
