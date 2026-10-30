@@ -1,6 +1,14 @@
 # droid-hal-configs sparse-16 waits forever for an AIDL KeyMint HAL before
 # multi-user.target. merlinx has only HIDL keymaster@4.1 (beanpod), so it would
-# block boot. The wait exists for sailfish-fpd, which this port does not ship.
+# block boot. The wait exists for Jolla's sailfish-fpd; this port ships
+# sailfish-fpd-community, whose gatekeeper client falls back to HIDL.
 /usr/lib/systemd/system/multi-user.target.wants/wait_for_keymint.service
 /usr/lib/systemd/system/wait_for_keymint.service
 /usr/bin/droid/wait_for_keymint
+# droid-bootctl marks the current A/B slot as successfully booted. merlinx is
+# not an A/B device (Android bootctl: "Failed to get bootctl module", exit 70),
+# so the unit only fails on every boot. mal: bootctl is not needed on all
+# devices (IRC 2024-03-08).
+/usr/lib/systemd/system/graphical.target.wants/droid-bootctl.service
+/usr/lib/systemd/system/droid-bootctl.service
+/usr/bin/droid/droid-bootctl.sh
