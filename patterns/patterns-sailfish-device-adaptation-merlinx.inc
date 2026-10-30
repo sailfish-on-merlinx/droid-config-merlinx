@@ -52,8 +52,15 @@ Requires: usb-moded
 
 Requires: rfkill
 
-# enable device lock and allow to select untrusted software
-Requires: jolla-devicelock-daemon-encsfa
+## Fingerprint: sailfish-fpd-community (sailfish-on-merlinx fork, AIDL backend);
+## it requires droid-biometry-fp, its Android side
+Requires: sailfish-fpd-community
+
+## Use screenlock supporting FPD
+Requires: sailfish-devicelock-fpd
+
+# Without FPD: enable device lock and allow to select untrusted software
+#Requires: jolla-devicelock-daemon-encsfa
 
 # For GPS
 Requires: geoclue-provider-hybris
