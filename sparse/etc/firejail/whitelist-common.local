@@ -13,7 +13,7 @@ whitelist /dev/socket/property_service
 whitelist /dev/random
 whitelist /dev/urandom
 whitelist /dev/shm
-whitelist /dev/ashmem
+whitelist /dev/ashmem*
 
 # libtls-padding is preloaded from /etc/ld.so.preload
 private-etc ld.so.preload
